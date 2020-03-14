@@ -1,25 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import covidApi from './covid'
+import CovidTable from './components/CovidTable'
+
 
 function App() {
+  const [covidCases, setCovidCases] = useState({
+    confirmedCases: [],
+    recoveredCases: [],
+    deathCases: []
+  })
+
+  useEffect(() => {
+    covidApi.getCases().then(cases => {
+      setCovidCases(cases)
+    })
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CovidTable covidCases={covidCases}/>
   );
 }
 
