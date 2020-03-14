@@ -17,7 +17,10 @@ function App() {
   }, [])
 
   return (
+    <>
+    <h2>Confirmed cases</h2>
     <CovidTable covidCases={covidCases}/>
+    </>
   );
 }
 
