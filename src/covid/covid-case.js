@@ -5,19 +5,19 @@ export default function makeCovidCase(covidInfo) {
   return Object.freeze({
     country: cov['Country/Region'],
     province: cov['Province/State'],
-    lat: cov['lat'],
-    lng: cov['long'],
+    lat: cov['Lat'],
+    lng: cov['Long'],
     timeSerie
   })
 
   function validateInfo(covidInfoToValidate) {
     try {
-      parseFloat(covidInfoToValidate['lat'])
+      parseFloat(covidInfoToValidate['Lat'])
     } catch (e) {
       throw e
     }
     try {
-      parseFloat(covidInfoToValidate['long'])
+      parseFloat(covidInfoToValidate['Long'])
     } catch (e) {
       throw e
     }
@@ -38,8 +38,8 @@ export default function makeCovidCase(covidInfo) {
     return [
       {
         ...covidInfoToNormalize,
-        lat: parseFloat(covidInfoToNormalize['lat']),
-        long: parseFloat(covidInfoToNormalize['long'])
+        lat: parseFloat(covidInfoToNormalize['Lat']),
+        long: parseFloat(covidInfoToNormalize['Long'])
       },
       timeSerie
     ]

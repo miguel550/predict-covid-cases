@@ -10,9 +10,9 @@ export default function makeDb () {
     if (cache.length > 0) {
       return Promise.resolve(cache)
     }
-    const sheets = ["Confirmed", "Recovered", "Deaths"]
+    const sheets = ["confirmed", "death"]
     const sheetsValues = sheets.map(async sheetName => {
-      let d = await fetch (`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-${sheetName}.csv`)
+      let d = await fetch (`https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_${sheetName}_global.csv`)
       d = await d.text()
       d = await parseCsv(d)
       return d

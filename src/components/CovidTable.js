@@ -39,7 +39,7 @@ const Row = (props) => {
   )
 }
 export default (props) => {
-  const {confirmedCases, recoveredCases, deathCase} = props.covidCases
+  const {confirmedCases} = props.covidCases
   return (
     <table border="1">
       <thead>
@@ -50,7 +50,7 @@ export default (props) => {
           <th>lng</th>
           <th>Counter</th>
           <th>Prediction for today</th>
-          <th>growthFactor</th>
+          <th>Growth Factor</th>
         </tr>
       </thead>
       <tbody>
